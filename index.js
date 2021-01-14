@@ -48,3 +48,10 @@ let [uno, ...resto] = miArray;
 
 console.info("\n", uno);
 console.info("\n", resto);
+
+//Copia superficial de objetos
+let miObjeto2 = {
+    ...miObjeto
+};
+
+console.info("\n", miObjeto2);
