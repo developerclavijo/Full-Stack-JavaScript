@@ -55,3 +55,5 @@ let miObjeto2 = {
 };
 
 console.info("\n", miObjeto2);
+
+//Promesas en JS
