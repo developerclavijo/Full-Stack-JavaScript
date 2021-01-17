@@ -9,7 +9,7 @@ let miObjeto = {
     }
 };
 
-console.info("\n", miObjeto);
+//console.info("\n", miObjeto);
 
 /*let {
     a,
@@ -39,21 +39,37 @@ let {
     ...noFuncion
 } = miObjeto;
 
-console.info("\n", d);
-console.info("\n", noFuncion);
+//console.info("\n", d);
+//console.info("\n", noFuncion);
 
 //Destructuración de funcion en una variable y lo demas en una 'Sola', en arreglos
 
 let [uno, ...resto] = miArray;
 
-console.info("\n", uno);
-console.info("\n", resto);
+//console.info("\n", uno);
+//console.info("\n", resto);
 
 //Copia superficial de objetos
 let miObjeto2 = {
     ...miObjeto
 };
 
-console.info("\n", miObjeto2);
+//console.info("\n", miObjeto2);
 
-//Promesas en JS
+//Ajax
+const listaUsuarios = document.getElementById("lista-usuarios");
+
+function reqListener() {
+    const usuarios = JSON.parse(this.responseText);
+    console.log(usuarios);
+    const usuariosRender = usuarios
+        .map(usuario => `<li>${usuario.nombre}</li>`)
+        .join("");
+    console.log(usuariosRender);
+    listaUsuarios.innerHTML = usuariosRender;
+}
+
+var peticion = new XMLHttpRequest();
+peticion.addEventListener("load", reqListener);
+peticion.open("GET", "https://bootcamp-dia-3.camilomontoyau.now.sh/usuarios");
+peticion.send();
