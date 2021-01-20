@@ -9,14 +9,17 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+        integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="css/style.css">
     <title>Veterinaria</title>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="veterinarias.html">
                 Veterinaria
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -58,8 +61,11 @@
     </nav>
 
     <div class="container actions-menu">
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
-            data-bs-whatever="@mdo">
+        <h1>
+            Veterinarios (as)
+        </h1>
+
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
             Nuevo
         </button>
     </div>
@@ -69,57 +75,15 @@
             <thead class="table-dark">
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
+                    <th scope="col">Identificaión</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellidos</th>
+                    <th scope="col">Pais</th>
                     <th scope="col">Acciones</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>
-                        <div class="btn-group" role="group" aria-label="Basic outlined example">
-                            <button type="button" class="btn btn-outline-primary">Editar</button>
-                            <button type="button" class="btn btn-outline-primary">Eliminar</button>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                    <td>
-                        <div class="btn-group" role="group" aria-label="Basic outlined example">
-                            <button type="button" class="btn btn-outline-primary">
-                                Editar
-                            </button>
-                            <button type="button" class="btn btn-outline-primary">
-                                Eliminar
-                            </button>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Larry the Bird</td>
-                    <td>@twitter</td>
-                    <td>@twitter</td>
-                    <td>
-                        <div class="btn-group" role="group" aria-label="Basic outlined example">
-                            <button type="button" class="btn btn-outline-primary">
-                                Editar
-                            </button>
-                            <button type="button" class="btn btn-outline-primary">
-                                Eliminar
-                            </button>
-                        </div>
-                    </td>
-                </tr>
+            <tbody id="listaVeterinarios">
+
             </tbody>
         </table>
     </div>
@@ -129,29 +93,47 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">
-                        Nueva mascota
+                        Nuevo Veterinario (a)
                     </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form id="form">
+                        <input type="hidden" id="indice">
                         <div class="row">
-                            <select class="form-select col" aria-label="Default select example">
-                                <option selected>Tipo de Animal</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                            <select class="form-select col" aria-label="Default select example" id="pais">
+                                <option selected>País</option>
+                                <option>
+                                    Perú
+                                </option>
+                                <option>
+                                    Mexico
+                                </option>
+                                <option>
+                                    Colombia
+                                </option>
+                                <option>
+                                    Argentina
+                                </option>
                             </select>
+
+                            <div class="col">
+                                <input type="text" name="identificacion" id="identificacion" class="form-control"
+                                    placeholder="Identificacion" aria-label="identificacion">
+                            </div>
+
                         </div>
 
                         <div class="row">
                             <div class="col">
-                                <input type="text" class="form-control" placeholder="First name"
-                                    aria-label="First name">
+                                <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre"
+                                    aria-label="Nombre">
                             </div>
                             <div class="col">
-                                <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
+                                <input type="text" name="apellidos" id="apellidos" class="form-control"
+                                    placeholder="Apellidos" aria-label="Apellidos">
                             </div>
+
                         </div>
                     </form>
                 </div>
@@ -159,7 +141,7 @@
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                         Cerrar
                     </button>
-                    <button type="button" class="btn btn-primary">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="btnGuardar">
                         Guardar
                     </button>
                 </div>
@@ -175,11 +157,12 @@
         integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous">
     </script>
 
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
-    -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/js/all.min.js"
+        integrity="sha512-UwcC/iaz5ziHX7V6LjSKaXgCuRRqbTp1QHpbOJ4l1nw2/boCfZ2KlFIqBUA/uRVF0onbREnY9do8rM/uT/ilqw=="
+        crossorigin="anonymous">
+    </script>
+
+    <script src="js/vaterianios.js"></script>
 </body>
 
 </html>
