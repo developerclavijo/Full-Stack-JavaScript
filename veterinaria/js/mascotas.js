@@ -36,7 +36,7 @@ function listarMascotas() {
                         data-bs-target="#exampleModal">
                         <i class="fas fa-edit"></i>
                     </button>
-                    <button type="button" class="btn btn-outline-primary">
+                    <button type="button" class="btn btn-outline-primary eliminar">
                         <i class="far fa-trash-alt"></i>
                     </button>
                 </div>
@@ -46,6 +46,10 @@ function listarMascotas() {
     listaMascotas.innerHTML = htmlMascotas;
     Array.from(document.getElementsByClassName('editar')).forEach(
         (botonEditar, index) => botonEditar.onclick = editar(index)
+    );
+
+    Array.from(document.getElementsByClassName('eliminar')).forEach(
+        (botonEliminar, index) => botonEliminar.onclick = eliminar(index)
     );
 }
 
@@ -89,6 +93,15 @@ function resetModal() {
     tipo.value = "Tipo de Animal";
     id.value = "";
     btnGuardar.innerHTML = 'Guardar';
+}
+
+function eliminar(index) {
+    return function clickEliminar() {
+        mascotas = mascotas.filter(
+            (mascota, indiceMascota) => indiceMascota !== index
+        );
+        listarMascotas();
+    }
 }
 
 listarMascotas();
