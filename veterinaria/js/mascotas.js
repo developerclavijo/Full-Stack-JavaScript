@@ -5,13 +5,19 @@ const nombre = document.getElementById("nombre");
 const dueno = document.getElementById("dueno");
 const form = document.getElementById("form");
 const btnGuardar = document.getElementById("btnGuardar");
-const indice = document.getElementById("indice");
+const id = document.getElementById("indice");
 
 let mascotas = [{
-    tipo: "Gato",
-    nombre: "Manchas",
-    dueno: "Juan"
-}];
+        tipo: "Gato",
+        nombre: "Manchas",
+        dueno: "Juan"
+    },
+    {
+        tipo: "Perro",
+        nombre: "Pepe",
+        dueno: "Mateo"
+    }
+];
 
 function listarMascotas() {
     const htmlMascotas = mascotas.map(
@@ -23,7 +29,8 @@ function listarMascotas() {
             <td>${mascota.dueno}</td>
             <td>
                 <div class="btn-group" role="group" aria-label="Basic outlined example">
-                    <button type="button" class="btn btn-outline-primary editar" data-index=${index}>
+                    <button type="button" class="btn btn-outline-primary editar" data-bs-toggle="modal" 
+                        data-bs-target="#exampleModal">
                         <i class="fas fa-edit"></i>
                     </button>
                     <button type="button" class="btn btn-outline-primary">
@@ -35,12 +42,8 @@ function listarMascotas() {
     ).join("");
     listaMascotas.innerHTML = htmlMascotas;
     Array.from(document.getElementsByClassName('editar')).forEach(
-        (botonEditar) => botonEditar.onclick = editar
+        (botonEditar, index) => botonEditar.onclick = editar(index)
     );
-}
-
-function editar(evento) {
-    console.log("evento", evento);
 }
 
 function enviarDatos(evento) {
@@ -52,6 +55,16 @@ function enviarDatos(evento) {
     };
     mascotas.push(DATOS);
     listarMascotas();
+}
+
+function editar(indice) {
+    return function cuandoHagoClick() {
+        const MASCOTA = mascotas[indice];
+        nombre.value = MASCOTA.nombre;
+        dueno.value = MASCOTA.dueno;
+        tipo.value = MASCOTA.tipo;
+        id.value = indice;
+    }
 }
 
 listarMascotas();
