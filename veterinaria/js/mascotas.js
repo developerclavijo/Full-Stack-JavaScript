@@ -5,6 +5,7 @@ const nombre = document.getElementById("nombre");
 const dueno = document.getElementById("dueno");
 const form = document.getElementById("form");
 const btnGuardar = document.getElementById("btnGuardar");
+const indice = document.getElementById("indice");
 
 let mascotas = [{
     tipo: "Gato",
@@ -14,15 +15,15 @@ let mascotas = [{
 
 function listarMascotas() {
     const htmlMascotas = mascotas.map(
-        (mascota, indice) =>
+        (mascota, index) =>
         `<tr>
-            <th scope="row">${indice}</th>
+            <th scope="row">${index}</th>
             <td>${mascota.tipo}</td>
             <td>${mascota.nombre}</td>
             <td>${mascota.dueno}</td>
             <td>
                 <div class="btn-group" role="group" aria-label="Basic outlined example">
-                    <button type="button" class="btn btn-outline-primary">
+                    <button type="button" class="btn btn-outline-primary editar" data-index=${index}>
                         <i class="fas fa-edit"></i>
                     </button>
                     <button type="button" class="btn btn-outline-primary">
@@ -33,6 +34,13 @@ function listarMascotas() {
         </tr>`
     ).join("");
     listaMascotas.innerHTML = htmlMascotas;
+    Array.from(document.getElementsByClassName('editar')).forEach(
+        (botonEditar) => botonEditar.onclick = editar
+    );
+}
+
+function editar(evento) {
+    console.log("evento", evento);
 }
 
 function enviarDatos(evento) {
