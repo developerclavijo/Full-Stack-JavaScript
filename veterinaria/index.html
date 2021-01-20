@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
         integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
         crossorigin="anonymous" />
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <title>Veterinaria</title>
 </head>
 
@@ -61,6 +61,10 @@
     </nav>
 
     <div class="container actions-menu">
+        <h1>
+            Mascotas
+        </h1>
+        
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
             data-bs-whatever="@mdo">
             Nuevo
@@ -145,20 +149,41 @@
                         <div class="row">
                             <select class="form-select col" aria-label="Default select example">
                                 <option selected>Tipo de Animal</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                                <option value="1">
+                                    Perro
+                                </option>
+                                <option value="2">
+                                    Gato
+                                </option>
+                                <option value="3">
+                                    Pájaro
+                                </option>
+                                <option value="4">
+                                    Otro
+                                </option>
                             </select>
                         </div>
 
                         <div class="row">
                             <div class="col">
-                                <input type="text" class="form-control" placeholder="First name"
-                                    aria-label="First name">
+                                <input type="text" name="nombre" class="form-control" placeholder="Nombre"
+                                    aria-label="Nombre">
                             </div>
-                            <div class="col">
-                                <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
-                            </div>
+                            <select class="form-select col" aria-label="Default select example">
+                                <option selected>Dueños</option>
+                                <option value="1">
+                                    Juan
+                                </option>
+                                <option value="2">
+                                    Mateo
+                                </option>
+                                <option value="3">
+                                    Marco
+                                </option>
+                                <option value="4">
+                                    Adrian
+                                </option>
+                            </select>
                         </div>
                     </form>
                 </div>
@@ -186,6 +211,8 @@
         integrity="sha512-UwcC/iaz5ziHX7V6LjSKaXgCuRRqbTp1QHpbOJ4l1nw2/boCfZ2KlFIqBUA/uRVF0onbREnY9do8rM/uT/ilqw=="
         crossorigin="anonymous">
     </script>
+
+    <script src="js/mascotas.js"></script>
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--
