@@ -64,7 +64,7 @@
         <h1>
             Mascotas
         </h1>
-        
+
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
             data-bs-whatever="@mdo">
             Nuevo
@@ -76,61 +76,14 @@
             <thead class="table-dark">
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
+                    <th scope="col">Tipo</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Dueño</th>
                     <th scope="col">Acciones</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>
-                        <div class="btn-group" role="group" aria-label="Basic outlined example">
-                            <button type="button" class="btn btn-outline-primary">
-                                <i class="fas fa-edit"></i>
-                            </button>
-                            <button type="button" class="btn btn-outline-primary">
-                                <i class="far fa-trash-alt"></i>
-                            </button>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                    <td>
-                        <div class="btn-group" role="group" aria-label="Basic outlined example">
-                            <button type="button" class="btn btn-outline-primary">
-                                <i class="fas fa-edit"></i>
-                            </button>
-                            <button type="button" class="btn btn-outline-primary">
-                                <i class="far fa-trash-alt"></i>
-                            </button>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Larry the Bird</td>
-                    <td>@twitter</td>
-                    <td>@twitter</td>
-                    <td>
-                        <div class="btn-group" role="group" aria-label="Basic outlined example">
-                            <button type="button" class="btn btn-outline-primary">
-                                <i class="fas fa-edit"></i>
-                            </button>
-                            <button type="button" class="btn btn-outline-primary">
-                                <i class="far fa-trash-alt"></i>
-                            </button>
-                        </div>
-                    </td>
-                </tr>
+            <tbody id="listaMascotas">
+
             </tbody>
         </table>
     </div>
@@ -145,20 +98,20 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form id="form">
                         <div class="row">
-                            <select class="form-select col" aria-label="Default select example">
+                            <select class="form-select col" aria-label="Default select example" id="tipo">
                                 <option selected>Tipo de Animal</option>
-                                <option value="1">
+                                <option>
                                     Perro
                                 </option>
-                                <option value="2">
+                                <option>
                                     Gato
                                 </option>
-                                <option value="3">
+                                <option>
                                     Pájaro
                                 </option>
-                                <option value="4">
+                                <option>
                                     Otro
                                 </option>
                             </select>
@@ -166,21 +119,22 @@
 
                         <div class="row">
                             <div class="col">
-                                <input type="text" name="nombre" class="form-control" placeholder="Nombre"
+                                <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre"
                                     aria-label="Nombre">
                             </div>
-                            <select class="form-select col" aria-label="Default select example">
+
+                            <select class="form-select col" aria-label="Default select example" id="dueno">
                                 <option selected>Dueños</option>
-                                <option value="1">
+                                <option>
                                     Juan
                                 </option>
-                                <option value="2">
+                                <option>
                                     Mateo
                                 </option>
-                                <option value="3">
+                                <option>
                                     Marco
                                 </option>
-                                <option value="4">
+                                <option>
                                     Adrian
                                 </option>
                             </select>
@@ -191,7 +145,7 @@
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                         Cerrar
                     </button>
-                    <button type="button" class="btn btn-primary">
+                    <button type="button" class="btn btn-primary" id="btnGuardar">
                         Guardar
                     </button>
                 </div>
